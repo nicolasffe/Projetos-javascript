@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 6: Data por Extenso</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <div class="exercicio">
+            <h2>Exercício 6: Data por Extenso</h2>
+            <form id="form-data">
+                <label for="dataInput">Digite uma data no formato "dd/mm/aaaa":</label>
+                <input type="text" id="dataInput" placeholder="Ex: 31/08/2012" required pattern="\d{2}/\d{2}/\d{4}">
+                
+                <button type="submit">Converter Data</button>
+            </form>
+            <div id="resultado-data" class="resultado" style="display:none;"></div>
+        </div>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

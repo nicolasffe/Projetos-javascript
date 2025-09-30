@@ -1,8 +1,7 @@
-// Seleciona os elementos principais da calculadora
+// elementos principais da calculadora
 const display = document.getElementById('display');
 const buttonsContainer = document.querySelector('.buttons');
 
-// Objeto para guardar o estado da calculadora
 const calculatorState = {
     displayValue: '0',
     firstOperand: null,
@@ -10,16 +9,15 @@ const calculatorState = {
     operator: null,
 };
 
-// Função para atualizar o que é mostrado na tela
+// atualizar tela
 function updateDisplay() {
     display.textContent = calculatorState.displayValue;
 }
 
 // Lida com o clique nos botões
 buttonsContainer.addEventListener('click', (event) => {
-    const { target } = event; // O elemento que foi clicado (o botão)
+    const { target } = event; 
 
-    // Se não for um botão, ignora
     if (!target.matches('button')) {
         return;
     }
@@ -59,7 +57,7 @@ function handleOperator(nextOperator) {
     const { firstOperand, displayValue, operator } = calculatorState;
     const inputValue = parseFloat(displayValue);
 
-    // Se um operador já existe e estamos esperando o segundo número
+    // espera o segundo operador
     if (operator && calculatorState.waitingForSecondOperand) {
         calculatorState.operator = nextOperator; // Troca o operador
         return;
@@ -74,7 +72,7 @@ function handleOperator(nextOperator) {
         calculatorState.firstOperand = result;
     }
     
-    // --- Ações especiais (C, +/-, =) ---
+    // soma/ subtrai/ igual
     switch (nextOperator) {
         case 'clear':
             resetCalculator();
@@ -87,29 +85,27 @@ function handleOperator(nextOperator) {
             calculatorState.waitingForSecondOperand = true;
             calculatorState.operator = null;
             break;
-        default: // Operador + ou -
+        default: 
             calculatorState.waitingForSecondOperand = true;
             calculatorState.operator = nextOperator;
     }
 }
 
-// Função que realiza o cálculo
+//realiza o cálculo
 function calculate(firstOperand, secondOperand, operator) {
     if (operator === 'add') {
         return firstOperand + secondOperand;
     } else if (operator === 'subtract') {
         return firstOperand - secondOperand;
     }
-    return secondOperand; // Se não houver operador, retorna o segundo número
+    return secondOperand; 
 }
 
-// Função para limpar e resetar a calculadora
+// limpar e resetar a calculadora
 function resetCalculator() {
     calculatorState.displayValue = '0';
     calculatorState.firstOperand = null;
     calculatorState.waitingForSecondOperand = false;
     calculatorState.operator = null;
 }
-
-// Inicia a tela
 updateDisplay();

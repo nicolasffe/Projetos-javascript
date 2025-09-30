@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /**
-     * @param {number} imc - O valor do índice de massa corporal.
-     * @returns {object} - Um objeto com a 'classificacao' e a 'classeCss'.
+     * @param {number} imc 
+     * @returns {object} 
      */
     function obterClassificacao(imc) {
         if (imc < 16) return { classificacao: "Baixo peso muito grave", classeCss: "baixo-peso-grave" };
